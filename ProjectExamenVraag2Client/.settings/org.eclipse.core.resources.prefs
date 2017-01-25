@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+encoding//src/service/GetQuotes.java=UTF-8
+encoding//src/service/GetQuotesResponse.java=UTF-8
+encoding//src/service/PrintGezochteQuote.java=UTF-8
+encoding//src/service/PrintGezochteQuoteResponse.java=UTF-8
+encoding//src/service/PrintQuotes.java=UTF-8
+encoding//src/service/PrintQuotesResponse.java=UTF-8
+encoding//src/service/QuotesHalen.java=UTF-8
+encoding//src/service/QuotesHalenService.java=UTF-8
+encoding//src/service/QuotesHalenServiceLocator.java=UTF-8
+encoding//src/service/QuotesHalenSoapBindingStub.java=UTF-8
