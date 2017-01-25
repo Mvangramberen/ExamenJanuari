@@ -7,6 +7,13 @@
 <title>Quotes Oscar wilde</title>
 </head>
 <body>
-
+	
+	<!-- Maken van formulier waarmee gezocht kan worden. -->
+	<form action="Result.jsp" method="post">
+		Zoeken op :<input type="text" name="zoekwoord"/>
+		<input type="submit" value="Zoeken">
+	</form>
+	
+	
 </body>
 </html>

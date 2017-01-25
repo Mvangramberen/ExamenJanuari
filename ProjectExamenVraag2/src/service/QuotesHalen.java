@@ -9,7 +9,7 @@ import java.util.Iterator;
 public class QuotesHalen {
 	
 	// Methode om Quotes uit txt bestand te halen
-	public ArrayList getQuotes(){
+	public ArrayList<String> getQuotes(){
 		
 		// Arraylist aanmaken voor Quotes in steken
 		 ArrayList<String> aQuotes = new ArrayList<String>() ;
