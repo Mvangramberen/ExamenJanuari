@@ -1,0 +1,90 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from QuotesHalenService WSDL service -->
+
+  <service name="QuotesHalen" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service"/>
+      <parameter name="wsdlServiceElement" value="QuotesHalenService"/>
+      <parameter name="schemaQualified" value="http://service"/>
+      <parameter name="wsdlServicePort" value="QuotesHalen"/>
+      <parameter name="className" value="service.QuotesHalenSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="QuotesHalen"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getQuotes" qname="operNS:getQuotes" xmlns:operNS="http://service" returnQName="retNS:getQuotesReturn" xmlns:retNS="http://service" returnType="rtns:ArrayOf_xsd_anyType" xmlns:rtns="http://service" returnItemQName="tns:item" xmlns:tns="http://service" soapAction="" >
+      </operation>
+      <operation name="printGezochteQuote" qname="operNS:printGezochteQuote" xmlns:operNS="http://service" returnQName="retNS:printGezochteQuoteReturn" xmlns:retNS="http://service" returnType="rtns:ArrayOf_xsd_anyType" xmlns:rtns="http://service" returnItemQName="tns:item" xmlns:tns="http://service" soapAction="" >
+        <parameter qname="pns:aLijst" xmlns:pns="http://service" type="tns:ArrayOf_xsd_anyType" xmlns:tns="http://service" itemQName="itns:item" xmlns:itns="http://service"/>
+        <parameter qname="pns:gezochtWoord" xmlns:pns="http://service" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="printQuotes" qname="operNS:printQuotes" xmlns:operNS="http://service" soapAction="" >
+        <parameter qname="pns:aLijst" xmlns:pns="http://service" type="tns:ArrayOf_xsd_anyType" xmlns:tns="http://service" itemQName="itns:item" xmlns:itns="http://service"/>
+      </operation>
+      <parameter name="allowedMethods" value="printQuotes getQuotes printGezochteQuote"/>
+
+      <typeMapping
+        xmlns:ns="http://service"
+        qname="ns:>getQuotes"
+        type="java:service.GetQuotes"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://service"
+        qname="ns:>printGezochteQuote"
+        type="java:service.PrintGezochteQuote"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://service"
+        qname="ns:>getQuotesResponse"
+        type="java:service.GetQuotesResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://service"
+        qname="ns:>printGezochteQuoteResponse"
+        type="java:service.PrintGezochteQuoteResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://service"
+        qname="ns:>printQuotesResponse"
+        type="java:service.PrintQuotesResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://service"
+        qname="ns:>printQuotes"
+        type="java:service.PrintQuotes"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://service"
+        qname="ns:ArrayOf_xsd_anyType"
+        type="java:java.lang.Object[]"
+        innerType="cmp-ns:anyType" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+  </service>
+</deployment>
